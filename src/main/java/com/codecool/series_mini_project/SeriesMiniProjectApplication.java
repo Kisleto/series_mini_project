@@ -32,8 +32,10 @@ public class SeriesMiniProjectApplication {
             Season season = Season.builder().numberOfSeason(1).numberOfEpisodes(10).build();
             Series game_of_thrones = Series.builder()
                     .name("Game of Thrones")
+                    .season(season)
                     .releaseDate(LocalDate.of(2010, 10, 10))
                     .build();
+            season.setSeries(game_of_thrones);
             seriesRepository.save(game_of_thrones);
         };
     }

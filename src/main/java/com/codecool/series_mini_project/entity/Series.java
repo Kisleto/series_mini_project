@@ -4,8 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Set;
 
 @Data
@@ -24,8 +23,10 @@ public class Series {
     private LocalDate releaseDate;
 
 
+    @Singular("season")
     @OneToMany(mappedBy = "series",
     cascade = CascadeType.PERSIST)
+    @EqualsAndHashCode.Exclude
     private Set<Season> seasonSet;
 
 
