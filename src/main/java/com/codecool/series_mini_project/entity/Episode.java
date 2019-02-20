@@ -23,6 +23,7 @@ public class Episode {
     private String title;
     private double length;
 
+
     @ManyToOne
     private Season season;
 
