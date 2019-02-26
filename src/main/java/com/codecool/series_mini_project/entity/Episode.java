@@ -1,11 +1,9 @@
 package com.codecool.series_mini_project.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -21,8 +19,13 @@ public class Episode {
     private WatchedStatus watchedStatus;
 
     private String title;
+
+    @Transient
     private double length;
 
+    @ElementCollection
+    @Singular
+    private List<Double> ratings;
 
     @ManyToOne
     private Season season;

@@ -10,6 +10,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDate;
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -44,4 +45,12 @@ public class SeriesTest {
         seriesRepository.saveAndFlush(game_of_thrones2);
     }
 
+    @Test(expected = DataIntegrityViolationException.class)
+    public void titleShouldNotBeNull(){
+        Series game_of_thrones = Series.builder()
+                .releaseDate(LocalDate.of(1999,10,10))
+                .build();
+        seriesRepository.save(game_of_thrones);
+
+    }
 }
